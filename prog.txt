@@ -1,8 +1,0 @@
-# empty program
-{}
-
-# single declaration
-{ declare x; }
-
-# multiple declarations
-{ declare x; declare y; declare z; }
