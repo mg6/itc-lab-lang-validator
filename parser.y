@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <math.h>
 
-void yyerror(char *s);
+void yyerror(const char *s);
 int yylex();
-
+extern int yylineno;
 extern FILE* yyin;
 
 %}
@@ -19,6 +19,7 @@ extern FILE* yyin;
 %start prog
 
 %defines
+%define parse.error verbose
 %union {
     int   number;
     char* string;
@@ -41,8 +42,8 @@ instr: instr WRITE VAR ';'
 
 %%
 
-void yyerror(char *s) {
-    fprintf(stderr, "%s\n", s);
+void yyerror(const char *s) {
+    fprintf(stderr, "line %d: %s\n", yylineno, s);
     exit(1);
 }
 
