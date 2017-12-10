@@ -1,0 +1,4 @@
+{
+  declare x;
+  read x;
+}
