@@ -7,7 +7,7 @@ assert_diff() {
   local actual
 
   actual="$(${root_dir}/lab input || true)"
-  diff -wu expected /dev/stdin <<< "$actual"
+  diff -wu expected /dev/stdin <<< "$actual" || { cat input; exit 1; }
 }
 
 run_suite() {
