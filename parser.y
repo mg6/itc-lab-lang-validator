@@ -30,7 +30,7 @@ prog: prog '{' decl instr '}'
     | /* empty */
     ;
 
-decl: decl DECLARE VAR ';' { printf("%s\n", $3); }
+decl: decl DECLARE VAR ';'
     | /* empty */
     ;
 
@@ -50,5 +50,6 @@ int main(int argc, char **argv)
     ++argv, --argc;
     yyin = (argc > 0) ? fopen(argv[0], "r") : stdin;
     yyparse();
+    puts("valid");
     return 0;
 }
