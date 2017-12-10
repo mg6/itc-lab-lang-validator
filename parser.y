@@ -45,9 +45,10 @@ void yyerror(char *s) {
     fprintf(stderr, "%s\n", s);
 }
 
-int main() 
+int main(int argc, char **argv)
 {
-    yyin = fopen("prog.txt", "r");
-    yyparse();    
+    ++argv, --argc;
+    yyin = (argc > 0) ? fopen(argv[0], "r") : stdin;
+    yyparse();
     return 0;
 }
